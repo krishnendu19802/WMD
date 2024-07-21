@@ -1,0 +1,6 @@
+Symptoms -> Disease -> Doctor
+
+(itching, skin_rash,red_sore_around_nose), Fungal Infection,Dermatologist
+(muscle_weakness,weakness_in_limbs,chest_pain,sweating),Heart Attack, Physician
+(depression,bruising,dizziness,anxiety, musclepain),,Vascular Surgeon
+(neck_pain,back_pain,cramps,puffy_face_and_eyes),,Orthopedic Surgeon
