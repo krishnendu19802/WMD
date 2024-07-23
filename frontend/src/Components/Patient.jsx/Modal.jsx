@@ -1,5 +1,7 @@
 import axios from 'axios'
 import React, { useState } from 'react'
+import { toast } from 'react-toastify'
+
 
 export default function Modal(props) {
     const { doctor_email, patient_email, date_of_appointment, slot_booked, doctor_name, fees, location, timeslot_start } = props.bookingDetails
@@ -22,8 +24,12 @@ export default function Modal(props) {
             // const form=document.getElementById('searchform')
             // form.dispatchEvent(new Event('submit', { cancelable: true }));
             btnclose.click()
+            toast.success('Slot Booked')
+            
         }).catch((error) => {
             console.log(error)
+            toast.success('Some error occured')
+
         });
         
     }

@@ -9,6 +9,7 @@ import DoctorCard from "./DoctorCard";
 import { AuthContext } from '../../context/AuthProvider';
 import NavBar from "../Navbar/NavBar";
 import Modal from "./Modal";
+import { toast } from "react-toastify";
 
 const Patientpages = () => {
 
@@ -70,6 +71,12 @@ const Patientpages = () => {
 
   useEffect(()=>{
     setFilteredDoctors([])
+    setBookingDetails({
+      doctor_email: '',
+      patient_email: '',  //it will be fetched from the context api
+      date_of_appointment: minDate,
+      slot_booked: 0
+    })
   },[formData])
 
   const handleChange = (e) => {
@@ -114,7 +121,8 @@ const Patientpages = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    // toast.success('hello')
+    
     console.log(formData); // Logging form data to console for demonstration
     if (formData.location != 'hulu') {
       axios.post(`http://localhost:3000/patient/find-doctor`, formData).then((result) => {
@@ -122,6 +130,7 @@ const Patientpages = () => {
         setFilteredDoctors(result.data)
       }).catch((error) => {
         crossOriginIsolated.log(error)
+        toast.error('Some error occured')
       })
     }
   };
@@ -168,10 +177,10 @@ const Patientpages = () => {
 
 
 
-      <h2 style={{ color: "black",textAlign:'center', marginBottom: "20px", marginTop:'.5rem' }}>
+      <h2 className="my-4 " style={{ color: "black",textAlign:'center', marginBottom: "20px", marginTop:'.5rem' }}>
         Available Doctors
       </h2>
-      <ul style={{ margin: "0px", padding: "0px" }}>
+      <ul style={{ margin: "0px", padding: "0px", marginBottom:'70px' }} >
         {filteredDoctors.map((doctor, index) => (
           <DoctorCard
             index={index}
@@ -184,13 +193,15 @@ const Patientpages = () => {
           />
         ))}
       </ul>
-      <div style={{
+      {bookingDetails.doctor_email.length!==0 &&<div className="fixed bottom-1 w-full" style={{
         textAlign: "center",
-        paddingBottom: "30px"
+        paddingBottom: "10px",
+        marginTop:'10px'
       }}>
 
         <button
           onClick={bookDoctor}
+          
           style={{
             width: "50%",
             padding: "10px",
@@ -204,7 +215,7 @@ const Patientpages = () => {
         >
           {bookingDetails.doctor_email !== "" ? "Book Your Slot" : "Select Your Slot"}
         </button>
-      </div>
+      </div>}
     </div>
   );
 };
