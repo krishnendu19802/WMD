@@ -1,0 +1,74 @@
+.heading {
+    text-align: center;
+    margin-top: 2.5vh;
+    font-weight: bold; /* Make the content bold */
+    animation: fadeInDown 1s ease; /* Define the animation */
+    box-shadow: 0px 4px 8px rgba(131, 226, 6, 0.628); /* Add a shadow */
+    padding-bottom: 10px;
+  }
+  
+.sub-heading{
+  text-align: left;
+    font-weight: bold; /* Make the content bold */
+    padding-bottom: 10px;
+    margin-top: 1.5rem;
+}
+  /* Define the animation keyframes */
+  @keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .container1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+  }
+  
+  .box-rounded {
+    background-color: #c7c6d6e8;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(126, 193, 75, 0.1);
+    width: 50vw; /* Adjust width as needed */
+    height: auto; /* Let height be determined by content */
+  }
+  
+  .form {
+    margin-bottom: 20px;
+  }
+  
+  .symptoms-container {
+    display: flex;
+    flex-wrap: wrap; /* Wrap items to the next line when they exceed the container width */
+    margin-top: 1vh; /* Adjust margin as needed */
+  }
+  
+  .badge {
+    border-radius: 2vh;
+   margin-bottom: 1vh; /* Add margin to the bottom of each symptom box */
+  }
+
+  .select-container {
+    margin-bottom: 1rem; /* Adjust margin as needed */
+  }
+  
+  .select-box {
+    width: 100%; /* Full width */
+    padding: 0.5rem; /* Adjust padding as needed */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  .select-box option {
+    padding: 0.5rem;
+    background-color: #fff;
+  }

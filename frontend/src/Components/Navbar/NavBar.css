@@ -1,0 +1,20 @@
+.nav-link {
+    position: relative; /* Ensure pseudo-element is positioned relative to the anchor */
+    text-decoration: none; /* Remove default underline */
+    color: black; /* Set text color */
+}
+
+.nav-link::after {
+    content: ''; /* Create pseudo-element */
+    position: absolute; /* Position it absolutely */
+    left: 0; /* Align with the left edge of the anchor */
+    bottom: 0; /* Align with the bottom of the anchor */
+    width: 0; /* Initially no width */
+    height: 1px; /* Height of the underline */
+    background-color: black; /* Color of the underline */
+    transition: width 0.3s ease; /* Transition width for smooth effect */
+}
+
+.nav-link:hover::after {
+    width: 100%; /* Expand width to create underline on hover */
+}

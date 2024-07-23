@@ -1,0 +1,67 @@
+/* Add this CSS in your stylesheet */
+/* body {
+    background: -webkit-linear-gradient(90deg, hsla(206, 33%, 63%, 0.6) 0%, rgb(175, 236, 201) 50%, hsla(231, 24%, 63%, 0.6) 100%);
+  } */
+.table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+/* th {
+  background-color: #f2f2f2;
+} */
+
+.schedule-container button {
+  border: none;
+  border-radius: 10%;
+  padding: 10px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.not-booked {
+  border: 2px solid #dc3545;
+  background-color: #ffb6c1;
+  color: rgb(16, 13, 13);
+}
+
+
+.booked {
+  border: 2px solid #138808;
+  border-radius: 10%;
+  background-color: #7ed957;
+  color: rgb(16, 15, 15);
+  transition: 0.5s all;
+}
+
+
+.schedule-container {
+  /* background: hsla(115, 86%, 41%, 0.8);
+    background: linear-gradient(90deg, hsla(115, 86%, 41%, 0.6) 0%, hsla(156, 71%, 96%, 1) 50%, hsla(29, 94%, 45%, 0.805) 100%);
+    background: -moz-linear-gradient(90deg, hsla(115, 86%, 41%, 0.6) 0%, hsla(156, 71%, 96%, 1) 50%, hsla(29, 100%, 44%, 0.773) 100%);
+    background: -webkit-linear-gradient(90deg, hsla(115, 86%, 41%, 0.6) 0%, hsla(156, 71%, 96%, 1) 50%, hsla(29, 100%, 44%, 0.759) 100%); */
+  /* background: white !important; */
+  color: black !important;
+  min-width: 70%;
+  border: 1px solid rgba(59, 59, 59, 0.659);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 15px !important;
+  padding-top: 10px !important;
+
+}
+
+.booked:hover {
+  background-color: rgb(2, 93, 2);
+  color: white;
+}
+
+.modal-backdrop {
+  z-index: 1040;
+}
