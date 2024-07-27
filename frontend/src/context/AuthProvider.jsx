@@ -13,6 +13,7 @@ const AuthProvider = ({ children }) => {
   const logout = () => {
     setIsAuthenticated([false]);
   };
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   const fetchdatalogin = async () => {
     const token = localStorage.getItem('whosmydoc')
@@ -21,7 +22,7 @@ const AuthProvider = ({ children }) => {
       const headers = {
         "Authorization": `Bearer ${token}`
       };
-      await axios.post(`http://localhost:3000/login`, {}, { headers }).then((result) => {
+      await axios.post(`${backendUrl}/login`, {}, { headers }).then((result) => {
         console.log(result.data)
         const { status, user } = result.data
         setIsAuthenticated([true, user])

@@ -17,6 +17,7 @@ import DoctorBookingRecords from "./Components/Doctor/DoctorBookingRecords";
 import PredictDoc from "./Components/PredictDoc/PredictDoc";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import MultiStepForm from "./Components/SignUp/MultiStepForm";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -35,7 +36,9 @@ function App() {
       <Routes>
         <Route exact path="" element={<Home />} />
         <Route exact path="/login" element={<Login />} />
-        <Route exact path="/signup" element={<SignUp />} />
+        {/* <Route exact path="/signup" element={<SignUp />} /> */}
+        <Route exact path="/signup" element={<MultiStepForm />} />
+
         <Route exact path="/doctor" element={<Doctorpages />} />
         <Route
           exact

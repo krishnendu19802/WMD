@@ -28,7 +28,8 @@ module.exports = (conn) => {
             }
 
             else {
-                const values = req.body
+                let values = req.body
+                console.log(values)
                 values.password = await hashPassword(values.password)
                 delete values.type
 

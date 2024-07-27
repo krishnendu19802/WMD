@@ -14,6 +14,8 @@ module.exports = (conn) => {
         conn.query(sql, (error, result) => {
             if (error) res.status(400).send(error)
             doc_list = result
+            if (doc_list.length === 0)
+                return res.status(200).send([])
 
             let final_list = []
             doc_list.map((doc, index) => {
@@ -84,12 +86,12 @@ module.exports = (conn) => {
                 doc_location = result[0]['location']
                 slot_booked += result[0]['timeslot_start']
                 // console.log("Doc", doc_name, result);
-                sendMail(patient_email, doctor_email, date_of_appointment, slot_booked, doc_name, doc_location)
+                // sendMail(patient_email, doctor_email, date_of_appointment, slot_booked, doc_name, doc_location)
             }
         })
 
         let sql = `INSERT INTO booking_details VALUES (?,?,?,?);`
-        conn.query(sql, Object.values(req.body), (error, result) => {
+        conn.query(sql, Object.values([doctor_email, patient_email, date_of_appointment, slot_booked]), (error, result) => {
             if (error) res.status(400).send(error)
             else res.send(req.body)
         })

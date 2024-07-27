@@ -10,7 +10,7 @@ import NavBar from "../Navbar/NavBar";
 export default function SignUp() {
   const [type, setType] = useState("doctor");
   const navigate = useNavigate();
-
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const [patient, setPatient] = useState({
     username: "",
     email: "",
@@ -73,7 +73,7 @@ export default function SignUp() {
         };
       }
       console.log("Data before axios ", data);
-      const res = await axios.post(`http://localhost:3000/register`, data);
+      const res = await axios.post(`${backendUrl}/register`, data);
 
       console.log("Response", res.data);
       if (res.data.status) {
@@ -106,14 +106,14 @@ export default function SignUp() {
   };
   return (
     <div>
-      <NavBar />
-      <div className="container-main  d-flex ailgn-content-center ">
-        <div className="main-box  m-auto row">
-          <div className="col-6 p-0 ">
-            <img src={img} alt="" className="signup-img" />
+      {/* <NavBar /> */}
+      <div className='highest h-screen flex justify-center items-center bg-pink-100'>
+        <div className="main-box  m-auto flex max-h-[500px]">
+          <div className="hidden md:block ">
+            <img src={img} alt="" className="contained max-h-[500px]" />
           </div>
           {type === "doctor" && (
-            <div className="col-6 form-inp overflow-auto">
+            <div className="w-full md:w-1/2 form-inp overflow-auto p-2">
               <h1 className="text-center mt-3">Register</h1>
               <form className="my-5 ps-2" onSubmit={handleSubmit}>
                 <div className="d-flex  input-div type-sel align-items-center justify-content-center fs-5">
@@ -328,7 +328,7 @@ export default function SignUp() {
           )}
 
           {type === "patient" && (
-            <div className="col-6 form-inp overflow-auto ">
+            <div className="w-full md:w-1/2 form-inp overflow-auto ">
               <h1 className="text-center mt-3 ">Register</h1>
               <form className="my-5 ps-2" onSubmit={handleSubmit}>
                 <div className="d-flex  input-div type-sel align-items-center justify-content-center fs-5">

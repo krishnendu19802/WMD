@@ -14,7 +14,8 @@ import LoadingButton from '@mui/lab/LoadingButton';
 export default function Login() {
     const [type, setType] = useState('doctor')
     const navigate = useNavigate();
-
+    const backendUrl = import.meta.env.VITE_BACKEND_URL;
+    console.log(backendUrl)
     const [user, setUser] = useState({
         email: '',
         password: '',
@@ -29,7 +30,7 @@ export default function Login() {
             // console.log(formData);
             const formData = { ...user, type };
             console.log("Form data", formData);
-            const res = await axios.post(`http://localhost:3000/login`, formData);
+            const res = await axios.post(`${backendUrl}/login`, formData);
             console.log("Logged in response : ");
             console.log(res.data);
 
@@ -138,19 +139,18 @@ export default function Login() {
                             </div>
                             <div className=" w-full flex justify-center">
 
-                                <TextField
-                                    select
+                                <select
                                     label="Type"
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
-                                    className='w-4/5 md:w-1/2 '
+                                    className='w-4/5 md:w-1/2 border p-2 rounded'
                                     value={type} onChange={handletype}
 
                                 >
-                                    <MenuItem value="doctor" selected>Doctor</MenuItem>
-                                    <MenuItem value="patient" >Patient</MenuItem>
-                                </TextField>
+                                    <option value="doctor" selected>Doctor</option>
+                                    <option value="patient" >Patient</option>
+                                </select>
                                 {/* Select the type of User
                                 <select id="dropdown  " name="dropdown" v className='mx-2 p-1 rounded' value={type} onChange={handletype}>
                                     <option value="doctor" >Doctor</option>

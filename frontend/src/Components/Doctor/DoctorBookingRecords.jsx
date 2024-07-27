@@ -10,6 +10,8 @@ function DoctorBookingRecords() {
     const { isAuthenticated } = useContext(AuthContext)
     const doc = isAuthenticated[0] && isAuthenticated[1]
     const navigate = useNavigate()
+    const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
     useEffect(() => {
         if (isAuthenticated[0] === false) {
             console.log("Auth", isAuthenticated);
@@ -25,7 +27,7 @@ function DoctorBookingRecords() {
     const getAllRecords = async () => {
         try {
             console.log(isAuthenticated[1]?.email);
-            const res = await axios.post('http://localhost:3000/doctor/booking-history', {
+            const res = await axios.post(`${backendUrl}/doctor/booking-history`, {
                 'doctor_email': isAuthenticated[1]?.email  //for checking
             })
             // console.log(res.data);

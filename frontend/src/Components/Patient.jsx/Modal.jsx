@@ -1,16 +1,21 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { toast } from 'react-toastify'
+import { AuthContext } from '../../context/AuthProvider'
 
 
 export default function Modal(props) {
     const { doctor_email, patient_email, date_of_appointment, slot_booked, doctor_name, fees, location, timeslot_start } = props.bookingDetails
     let obj = { doctor_email, patient_email, date_of_appointment, slot_booked }
+    const {isAuthenticated}=useContext(AuthContext)
     console.log(obj)
     console.log(timeslot_start, slot_booked)
 
     const [bookingstatus,setBookingStatus]=useState('')
     const handlebookingconfirmation = async () => {
+        obj.patient_email=isAuthenticated[1].email
+        console.log(obj)
+        // return
         await axios.post(`http://localhost:3000/patient/book-doctor`, obj).then((result) => {
             console.log(result)
             props.setBookingDetails({

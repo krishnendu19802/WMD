@@ -24,7 +24,7 @@ export default function PredictDoc() {
     'headache'
   ]);
   //   symptoms =
-
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
   const [symptoms, setSymptoms] = useState([]);
   const [predicedtype, setPredictedtype] = useState(false);
   const [valuesymp, setValuesymp] = useState("Select your symptom");
@@ -51,7 +51,7 @@ export default function PredictDoc() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await axios
-      .post(`http://localhost:3000/prediction`, { issues: symptoms })
+      .post(`${backendUrl}/prediction`, { issues: symptoms })
       .then((result) => {
         console.log(result.data);
         setPredictedtype(result.data);

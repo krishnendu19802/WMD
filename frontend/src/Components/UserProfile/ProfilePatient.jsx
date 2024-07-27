@@ -21,11 +21,11 @@ export default function ProfilePatient() {
     return (
         <>
             <NavBar />
-            <section className=" main-section" style={{ backgroundColor: "#f4f5f7" }}>
+            <section className=" main-section" style={{ backgroundColor: "" }}>
                 <div className="container py-5 h-100">
                     <div className="row d-flex justify-content-center align-items-center ">
                         <div className="col d-flex justify-content-center mb-4 mb-lg-0">
-                            <div className="card md:min-h-[40vh]  mb-3" style={{ borderRadius: ".5rem", boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)" }}>
+                            <div className="card min-w-[250px] md:min-w-[750px] md:min-h-[40vh]  mb-3" style={{ borderRadius: ".5rem", boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)" }}>
                                 <div className="md:flex md:h-full">
                                     <div className="w-full max-h-[20vh] md:max-h-[50vh] md:min-h-[40vh] md:w-1/3    gradient-custom text-center text-white text-xl "
                                         style={{ borderTopLeftRadius: ".3rem", borderBottomLeftRadius: ".2rem" }}>
@@ -41,11 +41,11 @@ export default function ProfilePatient() {
                                             <h5 className='hidden md:block'>Information</h5>
                                             <hr className="mt-0 mb-4 hidden md:block" />
                                             <div className="md:flex pt-1">
-                                                <div className="w-full md:w-1/2 mb-3 flex md:block justify-between items-center">
+                                                <div className="w-full me-4 md:w-1/2 mb-3 sm:flex md:block justify-between items-center">
                                                     <h5 className='text-centers'>Email</h5>
                                                     <p className="text-muted  ">{patient.email}</p>
                                                 </div>
-                                                <div className="w-full md:w-1/2 mb-3 flex md:block justify-between items-center">
+                                                <div className="w-full md:w-1/2 mb-3 sm:flex md:block justify-between items-center">
                                                     <h5 className='text-centers'>Username</h5>
                                                     <p className="text-muted  ">{patient.username}</p>
                                                 </div>

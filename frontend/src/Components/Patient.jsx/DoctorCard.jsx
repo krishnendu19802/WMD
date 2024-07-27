@@ -44,7 +44,7 @@ function DoctorCard({ doctor, index, handlechangeBookingDetails, bookingDetails,
                 {
                     doctor.slots.map((slot, index2) => (
                         slot ?
-                            <button key={index2} className={`${(doctor.email === bookingDetails.doctor_email && index2 === bookingDetails.slot_booked) ? "selected_slot" : "available_slot"} max-h-[50px]`}
+                            <button key={index2} className={`${(doctor.email === bookingDetails.doctor_email && index2 === bookingDetails.slot_booked) ? "selected_slot bg-yellow-300" : "available_slot"} max-h-[50px]`}
                                 onClick={() => {
                                    
                                     handlechangeBookingDetails("doctor_email", doctor.email);
@@ -58,15 +58,15 @@ function DoctorCard({ doctor, index, handlechangeBookingDetails, bookingDetails,
 
 
                                 }}
-                            > {(doctor.email === bookingDetails.doctor_email && index2 === bookingDetails.slot_booked) ? "Selected Slot" : "Book Slot"} {doctor.timeslot_start + index2} : 00 Hr</button> :
-                            <button key={index2} disabled={true} className='unavialable_slot max-h-[50px]'> Unavailable  {doctor.timeslot_start + index2} : 00 Hr</button>
+                            >  {doctor.timeslot_start + index2} : 00 Hr</button> :
+                            <button key={index2} disabled={true} className='unavialable_slot bg-gray-100 max-h-[50px]'> {doctor.timeslot_start + index2} : 00 Hr</button>
                     ))
                 }
                 <br />
 
             </div>
         </li>
-
+// {(doctor.email === bookingDetails.doctor_email && index2 === bookingDetails.slot_booked) ? "Selected Slot" : "Book Slot"}
     )
 }
 
