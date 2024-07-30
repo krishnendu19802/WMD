@@ -134,7 +134,7 @@ function ResponsiveAppBar() {
           {isAuthenticated[0] && <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <div className="h-12 w-12 rounded-full bg-red-500 text-white flex items-center justify-center p-2">{isAuthenticated[1].name[0]}</div>
+                <div className="h-12 w-12 rounded-full bg-red-500 text-white flex items-center justify-center p-2">{isAuthenticated[1].name[0].toUpperCase()}</div>
                 {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" /> */}
               </IconButton>
             </Tooltip>

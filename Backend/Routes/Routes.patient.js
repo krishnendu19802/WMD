@@ -9,10 +9,10 @@ module.exports = (conn) => {
     Router.post('/find-doctor', (req, res) => {
         const { date, location, specialisation } = req.body;
 
-        let sql = `SELECT * FROM Doctor WHERE specialisation = '${specialisation}' AND location = '${location}';`
+        let sql = `SELECT * FROM doctor WHERE specialisation = '${specialisation}' AND location = '${location}';`
         let doc_list = []
         conn.query(sql, (error, result) => {
-            if (error) res.status(400).send(error)
+            if (error) return res.status(400).send(error)
             doc_list = result
             if (doc_list.length === 0)
                 return res.status(200).send([])
@@ -24,7 +24,7 @@ module.exports = (conn) => {
                 let arr = new Array(doc.timeslot_end - doc.timeslot_start).fill(1);
                 // console.log(arr)
                 conn.query(sql, (error, values) => {
-                    if (error) res.send(error)
+                    if (error) return res.status(500).send(error)
                     // res.send(values)
 
                     values = values.map((val) => {
@@ -78,7 +78,7 @@ module.exports = (conn) => {
         let doc_location = ''
 
         // Location SLOT DATE DOCEMAIL DOCNAME
-        let sql_doc = `SELECT name, location, timeslot_start FROM Doctor where email='${doctor_email}';`
+        let sql_doc = `SELECT name, location, timeslot_start FROM doctor where email='${doctor_email}';`
         conn.query(sql_doc, (error, result) => {
             if (error) res.status.send(error)
             else {
@@ -116,7 +116,7 @@ module.exports = (conn) => {
                     let final_records = [];
                     records.map((rec, index) => {
                         // console.log(rec);
-                        let sql_ = `SELECT name, specialisation, qualification, timeslot_start, fees, location FROM Doctor WHERE email='${rec.doctor_email}'`;
+                        let sql_ = `SELECT name, specialisation, qualification, timeslot_start, fees, location FROM doctor WHERE email='${rec.doctor_email}'`;
                         conn.query(sql_, (error, values) => {
                             final_records.push({ ...rec, 'doctor': values[0], 'date_of_appointment': rec.date_of_appointment.toISOString().split('T')[0] })
                             if (index === records.length - 1)

@@ -46,7 +46,7 @@ export default function PatientPage({ updatePage, page }) {
 
         <div className='h-screen flex justify-center items-center bg-pink-50'>
             {page === 1 &&
-                <div className=" bg-white rounded shadow-md w-4/5 md:w-[400px] ">
+                <div className=" bg-white rounded shadow-md min-w-[250px] md:w-[400px] ">
                     <div className="flex h-[4px] mb-2">
                         <div className="bg-green-500 w-1/2 rounded-r-4  h-[4px]"></div>
                         <div className=" h-[4px] w-1/2"></div>
@@ -101,7 +101,7 @@ export default function PatientPage({ updatePage, page }) {
                 </div>}
 
             {page === 2 &&
-                <div className=" bg-white rounded shadow-md w-4/5 md:w-[400px] ">
+                <div className=" bg-white rounded shadow-md min-w-[250px] md:w-[400px] ">
                     <div className="flex h-[4px] mb-2">
                         <div className="bg-green-500 w-1/2 rounded-r-4  h-[4px]"></div>
                         <div className="bg-green-500 h-[4px] w-1/2"></div>

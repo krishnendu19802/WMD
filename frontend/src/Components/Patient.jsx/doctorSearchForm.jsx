@@ -37,10 +37,10 @@ function DoctorSearchForm({ handleSubmit, handleChange, formData, handlechangeBo
                         </option>
                     ))}
                 </select>
-                <div className='my-2 text-center'>
+                {/* <div className='my-2 text-center'>
                     Don't know which type of doctor to consult?
                     <Link to='/predict-doctor' className='text-blue-400 hover:underline' target='blank'>Click here</Link>
-                </div>
+                </div> */}
                 <select
                     name="location"
                     value={formData.location}

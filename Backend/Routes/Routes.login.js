@@ -29,7 +29,10 @@ module.exports = (conn) => {
                 // res.send(['Correct', { type: req.user.type, email: req.user.email, }])
                 let sql = `SELECT * from ${decoded.type} where email='${decoded.email}'`
                 conn.query(sql, (error, result) => {
-                    if (error) res.status(400).send(error)
+                    if (error) {
+                        console.log(error)
+                        res.status(400).send(error)
+                    }
                     else if (result.length == 0) {
                         res.status(400).send('Invalid credentials')
                     }
@@ -53,14 +56,15 @@ module.exports = (conn) => {
             const { email, password, type } = req.body
             let sql = `SELECT * FROM ${type} WHERE email = '${email}';`
             conn.query(sql, async (error, result) => {
-                if (error) res.status(400).send(error)
+                if (error) res.status(401).send(error)
                 else if (result.length == 0)
-                    res.send({ status: false, message: "Invalid email" })
+                    res.status(401).send({ status: false, message: "Invalid email" })
                 else {
                     //password matching
+                    console.log(result)
                     const match = await comparePassword(password, result[0].password);
                     if (!match) {
-                        return res.status(200).send({
+                        return res.status(401).send({
                             status: false,
                             message: 'Incorrect Password'
                         })

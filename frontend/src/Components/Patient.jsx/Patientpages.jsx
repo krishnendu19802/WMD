@@ -25,7 +25,7 @@ const Patientpages = () => {
 
   //getting the locations available
   const fetchlocations = async () => {
-    await axios.get(`http://localhost:3000/patient/get-locations`).then((result) => {
+    await axios.get(`${backendUrl}/patient/get-locations`).then((result) => {
       console.log(result.data)
       setLocation(result.data)
     }).catch((error) => {
@@ -34,7 +34,7 @@ const Patientpages = () => {
   }
 
   const fetchSpecialities = async () => {
-    await axios.get(`http://localhost:3000/patient/get-specialities`).then((result) => {
+    await axios.get(`${backendUrl}/patient/get-specialities`).then((result) => {
       setSpecialities(result.data)
     }).catch((error) => {
       console.log(error)
@@ -56,6 +56,8 @@ const Patientpages = () => {
       })  //if user authenticated set patient_email for booking details
     }
   }, [isAuthenticated])
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
 
   //getting the dates available
   const currentDate = new Date();
@@ -130,13 +132,13 @@ const Patientpages = () => {
 
     console.log(formData); // Logging form data to console for demonstration
     if (formData.location != 'hulu') {
-      axios.post(`http://localhost:3000/patient/find-doctor`, formData).then((result) => {
+      axios.post(`${backendUrl}/patient/find-doctor`, formData).then((result) => {
         console.log(result.data)
         setFilteredDoctors(result.data)
         if (result.data.length === 0)
           setShowEmpty(true)
       }).catch((error) => {
-        crossOriginIsolated.log(error)
+        console.log(error)
         toast.error('Some error occured')
       })
     }

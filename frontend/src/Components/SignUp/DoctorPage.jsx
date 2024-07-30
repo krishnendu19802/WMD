@@ -45,7 +45,8 @@ export default function DoctorPage({ updatePage, page }) {
         try {
 
             const res = await axios.post(`${backendUrl}/register`, { ...doctor, type: 'doctor' });
-            navigate("/login");
+            console.log(res)
+            // navigate("/login");
         } catch (error) {
             toast.error('Some error occured')
         }
@@ -53,7 +54,7 @@ export default function DoctorPage({ updatePage, page }) {
     return (
         <div className='h-screen flex justify-center items-center bg-pink-50'>
             {page === 1 &&
-                <div className=" bg-white rounded shadow-md w-[250px] md:w-[400px] ">
+                <div className=" bg-white rounded shadow-md min-w-[250px] md:w-[400px] ">
                     <div className="flex h-[4px] mb-2">
                         <div className="bg-green-500 w-1/3 rounded-r-4  h-[4px]"></div>
                         <div className=" h-[4px] w-1/3"></div>
@@ -110,7 +111,7 @@ export default function DoctorPage({ updatePage, page }) {
                 </div>}
 
             {page === 2 &&
-                <div className=" bg-white rounded shadow-md  w-[250px] md:w-[400px] ">
+                <div className=" bg-white rounded shadow-md  min-w-[250px] md:w-[400px] ">
                     <div className="flex h-[4px] mb-2">
                         <div className="bg-green-500 w-1/3   h-[4px]"></div>
                         <div className=" h-[4px] bg-green-500 w-1/3"></div>
@@ -149,7 +150,7 @@ export default function DoctorPage({ updatePage, page }) {
                 </div>}
 
             {page === 3 &&
-                <div className=" bg-white rounded shadow-md  w-[250px] md:w-[400px] ">
+                <div className=" bg-white rounded shadow-md min-w-[250px] md:w-[400px] ">
                     <div className="flex h-[4px] mb-2">
                         <div className="bg-green-500 w-1/3   h-[4px]"></div>
                         <div className="bg-green-500 w-1/3   h-[4px]"></div>

@@ -11,6 +11,7 @@ import { ArrowDropDownSharp } from '@mui/icons-material'
 import { Button } from 'antd'
 import SaveIcon from '@mui/icons-material/Save';
 import LoadingButton from '@mui/lab/LoadingButton';
+import { toast } from 'react-toastify'
 export default function Login() {
     const [type, setType] = useState('doctor')
     const navigate = useNavigate();
@@ -20,7 +21,7 @@ export default function Login() {
         email: '',
         password: '',
     })
-
+    const [error,setError]=useState([false])
     const { isAuthenticated, login, logout } = useContext(AuthContext);
 
     const handleSubmit = async (event) => {
@@ -33,6 +34,7 @@ export default function Login() {
             const res = await axios.post(`${backendUrl}/login`, formData);
             console.log("Logged in response : ");
             console.log(res.data);
+            // return
 
             if (res.data.status) {
                 //authentication done so set the data
@@ -56,10 +58,19 @@ export default function Login() {
             }
 
         } catch (error) {
-
+            console.log(error)
+            if(error?.response?.data?.message==='Invalid email')
+                setError([true,0])
+            else if(error?.response?.data?.message==='Incorrect Password')
+                setError([true,1])
+                
+            else
+            toast.error('Some error occured');
+            
         }
 
     }
+    // console.log(error)
 
     const handletype = (e) => {
         setType(e.target.value)
@@ -87,7 +98,7 @@ export default function Login() {
             },
         },
     };
-
+// console.log(error[0] && error[1]===0?'Invalid email': 'Incorrect password')
     return (
         <div className='highest h-screen flex justify-center items-center bg-pink-100'>
             {/* <NavBar /> */}
@@ -109,6 +120,7 @@ export default function Login() {
                                         placeholder='Enter your email'
                                         onChange={handlechangeUser}
                                         value={user.email}
+                                        error={error[0] && error[1]===0}
                                         required
                                         InputLabelProps={{
                                             shrink: true,
@@ -124,6 +136,8 @@ export default function Login() {
                                         type="password"
                                         name="password"
                                         variant="outlined"
+                                        error={error[0] && error[1]===1}
+
                                         className='w-4/5 md:w-1/2'
                                         placeholder='Enter your password'
                                         onChange={handlechangeUser} value={user.password}
@@ -158,7 +172,11 @@ export default function Login() {
 
                                 </select> */}
                             </div>
+                            {error[0]&& <p className='text-center text-red-500 text-md'>
+                            {error[1]===0?'Invalid email': 'Incorrect password'}
 
+                            </p>}
+                            
 
                             <div className="submit-button mt-5 flex justify-center">
                                 {/* <button className="" >Login</button> */}
